@@ -1,0 +1,21 @@
+body {
+  background-color:black;
+  color:white;
+}
+
+.mainframe {
+  width:50%;
+  border:solid 1px white;
+  margin:auto;
+}
+
+
+#player {
+  width:40%;
+  float:left;
+}
+
+#enemy {
+  width:40%;
+  float:right;
+}

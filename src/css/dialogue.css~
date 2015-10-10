@@ -1,0 +1,36 @@
+div.rounded {
+	padding:10px;
+	font-size:14px;
+	line-height:26px;
+	border: solid 2px #BFD0D6;
+	-moz-border-radius: 6px;
+	background-color: black;
+	color: white;
+}
+
+div#npc_response {
+	margin:auto;
+	margin-top:30px;
+	width:865px;
+	height:100px;
+}
+
+div#player_response {
+	margin:auto;
+	margin-top:15px;
+	width:865px;
+	height:100px;
+}
+
+a.response {
+	color:#ffffff;
+	text-decoration:none;
+	display:block;
+	padding:3px;
+	
+	border-bottom:solid 1px #555555;
+}
+
+a.response:hover {
+	background-color:#444444;
+}

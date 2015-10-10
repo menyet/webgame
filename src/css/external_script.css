@@ -1,0 +1,545 @@
+*
+{
+padding: 0;
+margin: 0;
+}
+
+/* neviditelny prvok */
+.hidden
+{
+position: absolute;
+top: -9999em;
+left: -9999em;
+}
+
+#newwindow {
+	
+position:relative;
+
+color: rgb(200,200,255);
+font-family: bookman old;
+text-align: left;
+
+width:900px;
+height:600px;
+
+
+
+
+}
+
+h1
+{
+color: rgb(210,220,240);
+text-align: center;
+font-variant: small-caps;
+font-size: 26px;
+}
+
+a
+{
+border: none;
+}
+
+img
+{
+border: none;
+}
+
+
+
+input.submit_button
+{
+color: rgb(210,220,255);
+height: 23px;
+opacity: .85;
+background-image: url('../images/play_button_background.gif');
+border-style: solid;
+border-color: gray;
+border-width: 1px;
+cursor: pointer;
+_cursor: hand;
+margin: 10px;
+}
+
+input.submit_button:hover
+{
+opacity: 1;
+}
+
+div.tooltip
+{
+color: rgb(190,200,220);
+width: 480px;
+position: absolute;
+filter: alpha(opacity=85);
+opacity:.85;
+padding: 4px;
+background-color: rgb(40,40,40);
+border-color: rgb(200,250,220);
+border-style: solid;
+border-width: 2px;
+-moz-border-radius: 6px;
+text-align: justify;
+font-family: bookman;
+font-size: 14px;
+}
+
+div.tooltip_title
+{
+font-variant: small-caps;
+font-size: 17px;
+font-weight: bold;
+color: white;
+}
+
+div.create_player_div
+{
+color: rgb(190,240,240);
+margin: 0px; 
+padding: 7px; 
+font-size: 75% !important;
+font-size: 14px;
+text-align: justify; 
+position: absolute; 
+border-color: rgb(200,250,220); 
+border-style: solid; 
+border-width: 1px; 
+-moz-border-radius: 6px;
+}
+
+b
+{
+font-weight: normal !important;
+font-weight: bold;
+}
+
+input.create_player_input
+{
+position: absolute;
+text-align: center;
+background-color: rgb(20,20,60);
+color: rgb(190,240,240);
+border-color: rgb(190,240,240);
+border-width: 1px;
+}
+
+div.create_player_button
+{
+margin: 0px;
+padding: 0px;
+padding-left: 1px;
+position: absolute;
+width: 15px;
+height: 16px;
+border-style: solid;
+border-width: 1px;
+border-color: rgb(190,240,240);
+background-color: rgb(20,20,60);
+color: rgb(190,240,240);
+text-align: center;
+font-size: 14px;
+font-weight: bold;
+font-family: Arial;
+cursor: Pointer;
+_cursor: Hand;
+}
+
+div.create_player_button:hover
+{
+background-color: rgb(120,120,160);
+}
+
+/* INVENTAR */
+div.inventory_helmet, div.inventory_amulet, div.inventory_armor, div.inventory_weapon, div.character_screen
+{
+position: absolute;
+border: solid 2px #BFD0D6;
+-moz-border-radius: 6px;
+background-color: black;
+color: white;
+}
+
+div.inventory_helmet
+{
+width: 65px;
+height: 65px;
+}
+
+div.inventory_amulet
+{
+width: 30px;
+height: 30px;
+}
+
+div.inventory_armor
+{
+width: 100px;
+height: 110px;
+}
+
+div.inventory_weapon
+{
+width: 180px;
+height: 65px;
+}
+
+
+div.inventory_item_details
+{
+position: absolute;
+border: solid 1px #BFD0D6;
+-moz-border-radius: 6px;
+background-color: black;
+color: white;
+width: 530px;
+height: 130px;
+top: 10px;
+left: 400px;
+padding: 5px;
+overflow: auto;
+}
+
+div.inventory_item_list
+{
+position: absolute;
+border: solid 1px #BFD0D6;
+-moz-border-radius: 6px;
+background-color: black;
+color: white;
+width: 530px;
+height: 400px;
+top: 165px;
+left: 400px;
+padding: 5px;
+overflow: auto;
+}
+
+div.inventory_stats
+{
+position: absolute;
+border: solid 1px #BFD0D6;
+-moz-border-radius: 6px;
+background-color: black;
+color: #BFD0D6;
+width: 340px;
+height: 120px;
+top: 445px;
+left: 20px;
+padding: 5px;
+overflow: auto;
+}
+
+a.item
+{
+text-decoration: none;
+}
+
+a.item:hover div.item
+{
+text-decoration: none;
+background-color: #4B7174;
+}
+
+div.item
+{
+border: 1px solid gray;
+margin: 5px;
+}
+
+div.item img
+{
+width: auto !important;
+width: 80px;
+max-width: 80px;
+margin: 5px;
+}
+
+span.magic
+{
+color: #C8B337;
+}
+
+span.runes
+{
+color: #B16EBF;
+}
+
+span.sockets
+{
+color: gray;
+}
+
+span.attack_type
+{
+color: #BFD0D6;
+}
+
+span.damage
+{
+color: rgb(0,185,0);
+}
+
+span.weight
+{
+color: gray;
+}
+
+span.spotreba
+{
+color: orange;
+}
+
+span.quantity
+{
+color: rgb(0,185,0);
+}
+
+span.obrana
+{
+color: rgb(150,165,0);
+}
+
+span.hitpointy
+{
+color: orange;
+}
+
+span.actionpointy
+{
+color: rgb(200,100,100);
+}
+
+
+div.item div.title
+{
+display: inline;
+position: relative;
+top: -12px;
+color: #BFD0D6;
+font-weight: normal;
+}
+
+img.zbran, img.amulet, img.armor, img.helma, img.naboje, img.runa, img.ine, img.potion
+{
+position: absolute;
+left: 10px;
+}
+
+img.zbran
+{
+top: 30px;
+}
+
+img.amulet
+{
+top: 50px;
+left: 70px;
+}
+
+img.helma
+{
+top: 30px;
+}
+
+img.armor
+{
+top: 15px;
+left: 40px;
+}
+
+img.helma
+{
+top: 35px;
+left: 60px;
+}
+
+img.runa
+{
+top: 55px;
+left: 80px;
+}
+
+img.naboje
+{
+top: 40px;
+left: 40px;
+}
+
+div.description
+{
+position: static;
+margin: 5px 62px 5px 195px;
+font-size: 75%;
+}
+
+div.description hr
+{
+border: none;
+border-top: solid 1px gray;
+margin: 8px 0 5px 0;
+}
+
+/* tlacidlo "polozit na zem" v inventari */
+a.drop_item
+{
+position: absolute;
+top: 5px;
+right: 18px;
+}
+
+/* tlacidlo "pridat runy" v inventari */
+a.runes
+{
+position: absolute;
+top: 55px;
+right: 18px;
+}
+
+/* MANUAL */
+div.manual_menu, div.manual_content
+{
+position: absolute;
+border: solid 1px #BFD0D6;
+-moz-border-radius: 6px;
+background-color: black;
+color: #BFD0D6;
+padding: 5px;
+overflow: auto;
+}
+
+div.manual_menu
+{
+width: 200px;
+height: 540px;
+top: 20px;
+left: 20px;
+}
+
+div.manual_content
+{
+width: 660px;
+height: 520px;
+top: 20px;
+left: 240px;
+padding: 15px;
+}
+
+div.manual_content h2
+{
+margin: 15px 0 0 0;
+color: rgb(160,250,210);
+background-color: inherit;
+}
+
+div.manual_content p
+{
+margin: 15px 0 0 0;
+}
+
+div.manual_content ul, div.manual_content ol
+{
+margin: 5px 0 5px 10px;
+list-style: none;
+}
+
+div.manual_content h2 img
+{
+margin: 0 5px 0 5px;
+}
+
+div.manual_content img
+{
+margin: 15px;
+}
+/* KONIEC MANUALU */
+
+
+
+/* STYLY PRE OBRAZOVKU POSTAVY */
+
+div.character_screen {
+	padding:10px;
+	position:absolute;
+	font-size:14px;
+	line-height:26px;
+}
+
+div.character_screen * {
+	clear:both;
+}
+
+
+div.character_screen div.name {
+	float:left;
+	clear:left;
+}
+
+div.character_screen div.value {
+	float:right;
+	clear:right;
+}
+
+div.character_screen#name {
+	width:860px;
+	height:25px;
+	left:10px;
+	top:10px;
+}
+
+div.character_screen#attributes {
+	width:200px;
+	height:185px;
+	left:10px;
+	top:60px;
+}
+
+div.character_screen#experience {
+	width:200px;
+	height:145px;
+	left:10px;
+	top:270px;
+}
+
+div.character_screen#stats {
+	width:310px;
+	height:130px;
+	left:250px;
+	top:60px;
+}
+
+div.character_screen#skills {
+	width:270px;
+	height:355px;
+	left:600px;
+	top:60px;
+}
+
+div.character_screen#perks {
+	width:310px;
+	height:200px;
+	left:250px;
+	top:215px;
+}
+
+div.character_screen#perks div {
+	width:220px;
+	height:200px;
+	overflow-y:scroll;
+	
+}
+
+
+
+
+div.character_screen#save {
+	width:690px;
+	height:20px;
+	left:10px;
+	top:440px;
+}
+
+
+
+
+

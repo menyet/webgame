@@ -1,0 +1,216 @@
+*
+{
+margin: 0;
+padding: 0;
+border: none;
+}
+
+body
+{
+text-align: center;
+background-color: black;
+color: white;
+font-family: Arial;
+}
+
+div.center
+{
+padding-top: 20px;
+margin: 0 auto;
+width: 800px;
+height: 800px;
+position: relative;
+background-image: url('../images/create_player/create_player_background.jpg');
+background-repeat: no-repeat;
+
+border-left: 1px solid rgb(180,180,250);
+}
+
+div.right
+{
+position: absolute;
+right: 0;
+width: 160px;
+text-align: left;
+padding: 5px;
+margin-top: 30px;
+
+/*
+border: 1px dotted red;
+*/
+}
+
+div.left
+{
+position: absolute;
+left: 95px;
+margin-top: 35px;
+}
+
+a.left div.left img
+{
+position: relative;
+top: -450px
+}
+
+div.left img
+{
+border: 1px solid rgb(180,180,250);
+}
+
+h1
+{
+visibility:hidden;
+}
+
+h2
+{
+padding-top: 7px;
+text-align: center;
+font-size: 100%;
+}
+
+img.title_image
+{
+
+}
+
+ul
+{
+list-style: none;
+}
+
+li
+{
+padding-left: 18px;
+background-image: url('../images/title_page/arrow.gif');
+background-repeat: no-repeat;
+background-position: 5px;
+}
+
+a, a:link, a:visited
+{
+text-decoration: none;
+color: white;
+font-variant: small-caps;
+font-size: 110%;
+font-weight: bold;
+}
+
+a:hover
+{
+color: rgb(180,180,250);
+}
+
+hr
+{
+border-bottom: solid 1px white;
+margin: 6px 0 6px 0;
+}
+
+form#loginform p {
+  position: relative;
+  margin: 2px 0 2px 0;
+}
+
+#loginform input {
+  position: absolute;
+  right: 0 !important;
+  right: 5px;
+  width: 100px;
+  border: solid 1px gray;
+}
+
+#loginform label {
+  font-size: 95%;
+  color: rgb(200,200,200);
+  background-color: inherit;
+}
+
+#loginform input.submit {
+  position: static;
+  width: 100%;
+  margin: 3px 0 3px 0;
+  cursor: pointer;
+}
+
+div.popis
+{
+font-size: 75%;
+}
+
+div.screenshot
+{
+padding: 5px;
+text-align: center;
+}
+
+div.screenshot a img
+{
+width: 150px;
+}
+
+div.story
+{
+position: absolute;
+left: 55px;
+width: 525px;
+margin-top: 35px;
+}
+
+div.story_div
+{
+margin: 20px;
+text-align: left;
+font-weight: bold;
+}
+
+img.story_image
+{
+margin: 10px;
+border: 1px solid rgb(180,180,250);
+}
+
+a.story_link
+{
+margin: 5px;
+}
+
+
+div.content {
+  border:solid 1px white;
+  width:600px;
+  float:left;
+	font-size:14px;
+	position:relative;
+}
+	
+div.not_logged_content {
+	position:relative;
+}
+	
+
+
+
+#regform {
+	text-align:left;
+	padding-left:50px;
+}
+
+#regform p {
+	clear:both;
+	padding:10px;
+}
+#regform label {
+	width:120px;
+	float:left;
+}
+
+#regform input {
+	float:left;
+}
+
+#regform span {
+	font-size:12px;
+	color:red;
+}

@@ -1,0 +1,32 @@
+div#shop {
+  
+  width:800px;
+  margin:auto;
+  margin-top:50px;
+  text-align:center;
+
+}
+
+div#buy {
+  height:300px;
+  overflow-y:scroll;
+}
+
+
+a.changetab {
+  display:block;
+  padding-top:3px;
+  padding-bottom:3px;
+  margin-bottom:3px;
+  border:solid 1px #222222;
+  color:white;
+  text-decoration:none;
+}
+
+a.changetab:hover {
+  background-color:#151515;
+}
+
+a.changetabactive {
+  background-color:#101010;
+} 

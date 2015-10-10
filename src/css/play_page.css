@@ -1,0 +1,301 @@
+body
+{
+margin-top: 0px;
+margin-left: 0px;
+margin-bottom: 0px;
+margin-right: 0px;
+padding-top: 0px;
+padding-bottom: 0px;
+padding-left: 0px;
+padding-right: 0px;
+background-color: black; 
+text-align: center;
+}
+
+div.mainframe
+{
+margin:0 auto;
+text-align: left;
+position: relative;
+width: 800px;
+height: 800px;
+background-image: url('../images/play_background.jpg');
+background-repeat:repeat-y; 
+background-position: top left;
+}
+
+/* okienko, ktore vykresli funkcia player_info() zo suboru functions_display_play.php */
+div.player_info
+{
+background-image: url('../images/play_player_info.jpg');
+position: absolute;
+left:0px;
+top: 209px;
+font-family: bookman;
+font-size: 12px;
+color: gray;
+width: 203px;
+height: 155px;
+border-style: none;
+}
+
+div.player_info_hp_left
+{
+font-size: 0;
+cursor: help;
+height:13px;
+background-color: rgb(90,170,90);
+position: relative;
+top:23px;
+left: 20px;
+}
+div.player_info_hp_right
+{
+font-size: 0;
+cursor: help;
+height:13px;
+background-color: rgb(200,180,30);
+position: relative;
+top:10px;
+}
+div.player_info_xp_left
+{
+font-size: 0;
+cursor: help;
+height: 9px;
+background-color: #5B845E;
+position: relative;
+top:23px;
+left: 20px;
+}
+div.player_info_xp_right
+{
+font-size: 0;
+cursor: help;
+height: 9px;
+background-color: #08150E;
+position: relative;
+top:14px; 
+}
+
+/* okienko, ktore vykresli funkcia world_map() zo suboru functions_display_play.php */
+div.world_map
+{
+position: absolute;
+left: 0px;
+top: 17px;
+color: yellow;
+width: 203px;
+height: 192px;
+border-style: none;
+background-image: url("../images/play_map.jpg");
+}
+
+/* obrazok, ktory vykresli funkcia location_map() zo suboru functions_display_play.php */
+div.location_map
+{
+position: absolute;
+top: 364px;
+left: 0px;
+color: yellow;
+width: 203px;
+height: 192px;
+border-style: none;
+background-image: url("../images/play_map.jpg");
+
+}
+
+/* okienko, ktore vykresli funkcia controls() zo suboru functions_display_play.php */
+.controls
+{
+top: 17px;
+left: 203px;
+position: absolute;
+width: 574px;
+height: 113px;
+border-style: none;
+background-repeat: no-repeat;
+background-image: url("../images/play_controls.gif");
+}
+
+.controls ul
+{
+margin-top: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-bottom: 15px;
+list-style-type: none;
+padding-bottom: 13px;
+padding-top: 7px;
+padding-left: 26px;
+padding-right: 0px;
+}
+
+/* ovladaci button */
+.controls ul li {
+padding: 0;
+margin: 0px 2px 0px 0px;
+position: relative;
+left: 0px;
+top: 18px;
+float: left;
+width: 104px;
+height: 23px;
+opacity: .8;
+-moz-border-radius: 8px;
+background-image: url('../images/play_button_background.gif');
+border-style: solid;
+border-color: gray;
+border-width: 1px;
+}
+
+.controls ul li:hover {
+opacity: 1;
+}
+
+.controls li a, .controls li a:visited, .controls li a:active {
+position: relative;
+top: 2px;
+font-size: 12px;
+text-transform: uppercase;
+font-family: bookman;
+text-decoration: none;
+color: rgb(190,200,220);
+}
+
+.controls img
+{
+padding-left: 5px;
+padding-top: 2px;
+padding-right: 5px;
+border-style: none;
+border-width: 0px;
+float: left;
+}
+
+div.left_controls
+{
+
+line-height:80%;
+padding: 8px;
+background: url('../images/tab.gif') no-repeat; 
+position: absolute; 
+left: -24px; 
+height: 100px; 
+width: 24px;
+cursor: pointer;
+}
+
+a.left_controls, a.left_controls:active, a.left_controls:visited
+{
+color: rgb(160,170,190);
+font-size: 70%;
+text-decoration: none;
+background-color: inherit;
+}
+
+a.left_controls:hover
+{
+color: rgb(190,200,220);
+background-color: inherit;
+}
+
+/*  koniec okna CONTROLS */
+
+/* ilustracny obrazok ku kazdej lokacii */
+img.location_image
+{
+float:right;
+border-style: solid;
+border-color: black;
+border-width: 1px;
+}
+
+/* nadpis lokacie */
+h1.location_title
+{
+margin: 0px;
+margin-bottom: 10px;
+padding: 0px;
+text-align: center;
+font-variant: small-caps;
+font-size: 29px;
+color: rgb(190,200,250);
+}
+
+/* popis lokacii */
+div#play_screen_content
+{
+color: rgb(190,250,210);
+margin: 0px;
+padding: 0px;
+position: absolute;
+top: 145px;
+left: 250px;
+width: 500px;
+}
+
+/* predmety leziace na zemi */
+div.items_on_ground
+{
+color: orange;
+}
+
+div.items_on_ground a, div.items_on_ground a:active, div.items_on_ground a:visited
+{
+color: rgb(190,250,210);
+text-decoration: none;
+}
+
+div.items_on_ground a:hover
+{
+color: orange;
+}
+
+div.items_on_ground p
+{
+margin: 0;
+}
+
+span.magic
+{
+color: #C8B337;
+}
+
+span.magic:hover
+{
+color: orange;
+}
+
+/* koniec k predmetom leziacim na zemi */
+
+/* systemove spravy pre hraca */
+div.message
+{
+font-size: 90%;
+color: orange;
+margin: 10px
+}
+
+
+
+
+div.citymap {
+  width:500px;
+  height:350px;
+  position:relative;
+}
+
+
+
+
+img.maptile {
+  border-color: red;
+  border-width: 1px;
+  position: absolute;
+  width:17px;
+  height: 17px;
+}
+
+
+

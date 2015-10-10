@@ -1,0 +1,16 @@
+function showLoadedWin() {
+  if (Ajax.checkReadyState() == 200) {
+    document.getElementById('popupcontent').innerHTML = Ajax.getResponse();
+	document.getElementById('popupbackground').style.visibility = "visible";
+	document.getElementById('popupcontainer').style.visibility = "visible";
+  }
+}
+	
+function showWin(link, title) {
+  //win = new Window({className: "nuncio", title: title, width:900, height:500, minimizable: false, draggable: false, destroyOnClose: true, recenterAuto:true}); 
+    AjaxUpdater.Update("GET", link, showLoadedWin);
+  }
+
+function changeWin(link) {
+    AjaxUpdater.Update("GET", link, showLoadedWin);
+}

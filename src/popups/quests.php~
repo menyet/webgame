@@ -1,0 +1,38 @@
+<?php
+
+require '../security.php';
+require '../classes/class_external_script.php';
+
+require '../classes/class_questmgr.php';
+
+class QUESTS extends EXTERNAL_SCRIPT
+{
+	private $questMgr = null;
+
+
+	function DisplayBody() {
+
+	  $quests = $this->questMgr->getQuests();
+
+	  foreach ($quests as $quest) {
+	    echo $quest->title;
+	  }
+	
+	}
+
+	function QUESTS() {
+		session_start();
+
+		$this->questMgr = new QuestManager($_SESSION['id']);
+
+		$this->Display('external_script.css','Questy');
+
+
+	}
+
+}
+
+	// vytvorenie objektu skriptu
+	$page = new QUESTS();
+
+?>

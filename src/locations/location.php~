@@ -1,0 +1,118 @@
+<?php
+
+
+/*
+
+
+
+*/
+
+
+
+
+
+require_once('classes/class_npc_manager.php');
+
+
+class Location extends NORMAL_PAGE {
+  private $img_path = '';
+  private $description = '';
+
+
+  protected function setImagePath($path) {
+    $this->img_path = $path;
+  }
+
+  protected function setDescription($description) {
+    $this->description = $description;
+  }
+
+  protected function displayNPCs() {
+    $NPCMgr = new NPCManager($_SESSION['id']);
+
+$this->player = playerManager::getInstance()->getPlayer();
+
+
+    $NPCs = $NPCMgr->getNPCs($this->player->x,$this->player->y);
+
+
+    foreach($NPCs as $npc) {
+      echo '<hr style="clear:both" />'.$npc->name.' <a href="#" onclick="showWin(\''.URL.'dialogue/begin/'.$npc->id.'\', \'Inventár\')">Približiť sa</a>';
+
+
+    }
+
+  }
+
+
+  public function __construct(){
+  }
+
+  function DisplayBody(){
+    $player = playerManager::getInstance()->getPlayer();
+		
+		world_map($player->x,$player->y);
+		player_info($player);
+		controls();
+		
+		// obrazok prostredia
+		echo '
+		<img class="location_image" src="'.$this->img_path.'" alt="ilustrácia" />';
+		
+		// popis prostredia
+		echo '
+		<div class="location_description">';
+		DisplayMessages();
+		echo $this->description;
+		DisplayItemsOnGround();
+
+$this->displayNPCs();
+
+
+
+		$query = 'SELECT dialogue, dialogue_position FROM dialogues_players WHERE player_id=?';
+		
+		$stmt = MySQLConnection::getInstance()->prepare($query);
+		$stmt->bind_param('i',$_SESSION['id']);
+		$stmt->execute();
+		$stmt->store_result();
+
+		if ($stmt->num_rows > 0) {
+		  $stmt->bind_result($dialogue, $dialogue_position);
+		  $stmt->fetch();
+
+		    echo '
+			      <script type="text/javascript">
+				showWin("'.URL.'dialogue/continue/'.$dialogue.'", "Inventár");
+			      </script>
+			 ';
+			}
+		}
+
+		$stmt->close();
+
+
+
+
+
+
+
+		
+
+
+		echo '
+		</div>';
+
+		
+
+	  
+
+
+
+
+	}
+
+	
+}
+
+?>

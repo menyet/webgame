@@ -1,0 +1,361 @@
+<?php
+
+require '../security.php';
+require '../classes/class_external_script.php';
+require '../classes/class_player.php';
+
+
+
+class CHARACTER extends EXTERNAL_SCRIPT
+{
+	private $player = null;
+	
+	
+		function DisplayHead($css_file,$title){
+		parent::DisplayHead($css_file,$title);
+		// engine pre tool-tipy
+		echo '<script language="JavaScript1.2" src="'.URL.'scripts/create_player_tooltips.js" type="text/javascript""></script>';
+	}
+	
+
+	function DisplayBody() {
+		
+		echo '
+
+
+
+
+		<div id="tiplayer" style="visibility:hidden;position:absolute;z-index:1000;top:-100;"></DIV>
+			<script language="JavaScript1.2" >';
+		/* tu je definovany styl tooltipov a to v tomto poradi: 
+			Style[...]=[	titleColor,TitleBgColor,TitleBgImag,TitleTextAlign,TitleFontFace,TitleFontSize,
+							TextColor,TextBgColor,TextBgImag,TextTextAlign,TextFontFace,TextFontSize,Width,Height,BorderSize,BorderColor,
+							Textpadding,transition number,Transition duration,Transparency level,shadow type,shadow color,Appearance behavior,
+							TipPositionType,Xpos,Ypos] */
+		echo 'Style[0]=["","","","","","","","","","","","","100px" , ,,"",,,,,,"",,,,];';
+		echo 'var TipId="tiplayer";';
+		echo 'var FiltersEnabled = 0;';
+		echo 'mig_clay();';
+		echo '</script>';
+		
+			$this->CreateToolTip(0,'','Body, ktoré môžeš prerozdeliť medzi zručnosti akokoľvek chceš<br>Čím viac percent už máš v danej zručnosti, tým viac bodov minieš na jedno percento.');
+			$this->CreateToolTip(1,'Boj s chladnými zbraňami - zbraňami na boj z blízka',' - nože, meče, sekery, skrutkovače, válčeky na cesto, kladivá, lopaty...');
+			$this->CreateToolTip(2,'Streľba z klasických strelných zbraní',' - luky, kuše, praky');
+			$this->CreateToolTip(3,'Používanie hi-tech zbraní cudzincov',' - pištole, pušky, samopale, motorové píly, miniguny, guľomety, bazooky, granátomety...');
+			$this->CreateToolTip(4,'Útočné kúzla',' - magické výboje, firebally, nekromancia, hnilobné a oslepovacie kúzla, choroby...');
+			$this->CreateToolTip(5,'Obranné kúzla',' - liečenia, štíty, regeneračné kúzla, aury, vyvolávanie lesných tvorov...');
+			$this->CreateToolTip(6,'Obchodovanie','Obchodovanie určuje cenu predávaných a kupovaných predmetov. Čím viac percent, tým lacnejší nákup a drahší predaj u obchodníkov.');
+			$this->CreateToolTip(7,'Kradnutie','Kradnutie určuje šancu na úspech krádeží. Okrem toho určuje aj množstvo ukradnutých šupín (peňazí). ');
+			$this->CreateToolTip(8,'Gamblovanie','Šanca na výhru v hazardných hrách. Úspešnosť závisí okrem toho aj od atribútu Šťastie.');
+			$this->CreateToolTip(9,'Liečenie','Určuje šancu na úspešné liečenie a počet vyliečených Hit-Pointov.');
+			$this->CreateToolTip(10,'Výroba lektvarov - Alchýmia','Úspešnosť výroby lektvarov. Úspech závisí aj od zložitosti lektvaru.');
+
+		
+		
+		
+		
+		
+		
+		
+		
+		echo '
+		<form action="'.URL.'character" id="character" method="post">
+			
+			<div class="character_screen" id="name">
+				'.$this->player->name.' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '.$this->player->gender.'
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; '.$this->player->rank.'
+			</div>
+
+
+
+			<div class="character_screen" id="attributes">
+				<div class="name">SILA</div>
+				<div class="value">'.$this->player->strength.'</div>
+
+				<div class="name">VÝDRŽ</div>
+				<div class="value">'.$this->player->energy.'</div>
+
+				<div class="name">INTELIGENCIA</div>
+				<div class="value">'.$this->player->intelligence.'</div>
+
+				<div class="name">RÝCHLOSŤ</div>
+				<div class="value">'.$this->player->speed.'</div>
+
+				<div class="name">CHARIZMA</div>
+				<div class="value">'.$this->player->charisma.'</div>
+
+				<div class="name">ŠŤASTIE</div>
+				<div class="value">'.$this->player->luck.'</div>
+
+			</div>
+
+			<div class="character_screen" id="experience">
+				<div class="name">Level</div>
+				<div class="value">1</div>
+
+				<div class="name">Skúsenosti</div>
+				<div class="value">'.$this->player->xp.'</div>
+
+				<div class="name">Ďaľší level</div>
+				<div class="value">'.$this->player->GetXPNextLevel().'</div>
+			</div>
+
+			<div class="character_screen" id="stats">
+				<div class="name">HP</div>
+				<div class="value">'.$this->player->hp.'/'.$this->player->hp_max.'</div>
+				
+				<div class="name">Základná obrana</div>
+				<div class="value">'.$this->player->base_armor.' ('.$this->player->getArmor().')</div>
+
+				<div class="name">Akčné body</div>
+				<div class="value">'.$this->player->base_action_points.'/'.$this->player->getAPMax().'</div>
+
+				<div class="name">Základná nosnosť</div>
+				<div class="value">'.$this->player->base_nosnost.' ('.$this->player->getNosnost().')</div>
+
+				<div class="name">Obnova zdravia</div>
+				<div class="value">'.$this->player->base_obnova_zdravia.'</div>
+
+			</div>
+
+
+
+
+
+
+
+
+
+			<input type="hidden" id="sp_0" name="sp_0" value="'.$this->player->zrucnost_chladne_zbrane.'" />
+			<input type="hidden" id="sp_1" name="sp_1" value="'.$this->player->zrucnost_strelne_zbrane.'" />
+			<input type="hidden" id="sp_2" name="sp_2" value="'.$this->player->zrucnost_cudzinecke_zbrane.'" />
+			<input type="hidden" id="sp_3" name="sp_3" value="'.$this->player->zrucnost_utocna_magia.'" />
+			<input type="hidden" id="sp_4" name="sp_4" value="'.$this->player->zrucnost_obranna_magia.'" />
+			<input type="hidden" id="sp_5" name="sp_5" value="'.$this->player->zrucnost_obchodovanie.'" />
+			<input type="hidden" id="sp_6" name="sp_6" value="'.$this->player->zrucnost_kradnutie.'" />
+			<input type="hidden" id="sp_7" name="sp_7" value="'.$this->player->zrucnost_gamblovanie.'" />
+			<input type="hidden" id="sp_8" name="sp_8" value="'.$this->player->zrucnost_liecenie.'" />
+			<input type="hidden" id="sp_9" name="sp_9" value="'.$this->player->zrucnost_vyroba_lektvarov.'" />
+
+			<div class="character_screen" id="skills">
+				<div>Zručnosti:</div>
+				<div class="name" '.$this->useToolTip(1).'>Chladné zbrane</div>		<div class="value" id="val_0"></div>
+				<div class="name" '.$this->useToolTip(2).'>Strelné zbrane</div>		<div class="value" id="val_1"></div>
+				<div class="name" '.$this->useToolTip(3).'>Cudzinecké zbrane</div>	<div class="value" id="val_2"></div>
+				<div class="name" '.$this->useToolTip(4).'>Útočná_mágia</div>		<div class="value" id="val_3"></div>
+				<div class="name" '.$this->useToolTip(5).'>Obranná mágia</div>		<div class="value" id="val_4"></div>
+				<div class="name" '.$this->useToolTip(6).'>Obchodovanie</div>		<div class="value" id="val_5"></div>
+				<div class="name" '.$this->useToolTip(7).'>Krádež</div>				<div class="value" id="val_6"></div>
+				<div class="name" '.$this->useToolTip(8).'>Gamblovanie</div>			<div class="value" id="val_7"></div>
+				<div class="name" '.$this->useToolTip(9).'>Liečenie</div>			<div class="value" id="val_8"></div>
+				<div class="name" '.$this->useToolTip(10).'>Výroba lektvarov</div>	<div class="value" id="val_9"></div>
+				<hr/>
+				<div class="name">VOĽNÉ ZRUČNOSTI:</div>
+				<div class="value" id="val_sp">'.$this->player->skill_points.'</div>
+				
+			</div>
+
+
+
+
+
+
+			<script type="text/javascript">
+				var skills = [];
+				var increase = [];
+				var SP = 0;
+
+				function SPreset() {
+					skills[0] = '.$this->player->zrucnost_chladne_zbrane.';
+					skills[1] = '.$this->player->zrucnost_strelne_zbrane.';
+					skills[2] = '.$this->player->zrucnost_cudzinecke_zbrane.';
+					skills[3] = '.$this->player->zrucnost_utocna_magia.';
+					skills[4] = '.$this->player->zrucnost_obranna_magia.';
+					skills[5] = '.$this->player->zrucnost_obchodovanie.';
+					skills[6] = '.$this->player->zrucnost_kradnutie.';
+					skills[7] = '.$this->player->zrucnost_gamblovanie.';
+					skills[8] = '.$this->player->zrucnost_liecenie.';
+					skills[9] = '.$this->player->zrucnost_vyroba_lektvarov.';
+					SP = '.$this->player->skill_points.'
+
+					for (var i=0; i<10; i++) {
+						increase[i] =0;
+					}
+					display();
+				}
+
+				function display() {
+					for (var i=0; i<10; i++) {
+						document.getElementById("sp_"+ i).value = increase[i];
+						document.getElementById("val_"+i).innerHTML = ((SP>0)?(\'<a href="#" onclick="add(\'+i+\')">+</a>\'):"") +    (skills[i]+increase[i]);	
+					}
+					document.getElementById("val_sp").innerHTML = SP;
+				}
+
+
+				
+				SPreset();
+
+				function add(skill) {
+					increase[skill]++;
+					SP--;
+					display();
+					
+				}
+		
+			</script>
+
+		
+		<div class="character_screen" id="perks"><div>
+';
+
+		$perks = $this->player->getAllPerks();
+		
+		
+		$script = '<script type="text/javascript">
+			var hasPerks = Array();
+			var freePerks = '.$this->player->volne_perky.';
+
+			function setPerk(id) {
+				if (hasPerks[id]) {
+					return;
+				}
+
+				if (document.getElementById("perk_"+id).checked) {
+					freePerks--;
+				} else {
+					freePerks++;
+				}
+
+				if (freePerks == 0) {
+					for (var i=1; i<=3; i++) {
+						if (!document.getElementById("perk_"+i).checked) {
+							document.getElementById("perk_"+i).disabled = true;
+						}
+					}
+				} else {
+					for (var i=1; i<=3; i++) {
+						if (!hasPerks[i]) {
+							document.getElementById("perk_"+i).disabled = false;
+						}
+					}
+				}
+
+
+				
+			}
+';
+		
+		
+		foreach($perks as $perk) {
+			
+			
+			$disabled = '';
+			$checked = '';
+			$has = $this->player->hasPerk($perk->id);
+			
+			
+			$script .= 'hasPerks['.$perk->id.'] = '.(($has)?('true'):('false')).';';
+			
+			if ($has) {
+				$disabled = 'disabled="disabled"';
+				$checked = 'checked="checked"';
+			}			
+			
+			if ($this->player->volne_perky == 0) {
+				$disabled = 'disabled="disabled"';
+			}
+			
+			echo '<input type="checkbox" onclick="setPerk('.$perk->id.')" '.$disabled.' '.$checked.' name="perk_'.$perk->id.'" id="perk_'.$perk->id.'" /><label for="perk_'.$perk->id.'">'.$perk->name.'</label><br/>';
+		}
+		
+		$script .= '</script>';
+		
+		echo $script;
+
+
+echo '
+			</div></div>
+
+
+			<div class="character_screen" id="save">
+				<input type="hidden" name="update_character" value="yes" />
+				<a href="#" onclick="document.getElementById(\'character\').submit()"> ULOZ</a>
+				<a href=#" onclick="SPreset()">RESET</a>
+			</div>
+			
+		</form>
+
+';	
+	}
+
+	function __construct() {
+		session_start();
+		$this->player = new PLAYER();
+		
+		
+		if (isset($_POST['update_character'])) {
+			$pridane_body =0;
+			for ($i =0; $i < 10; $i ++) {
+				$pridane_body += $_POST['sp_'.$i];
+			}
+			
+			
+			if ($this->player->skill_points >= $pridane_body) {
+				$this->player->zrucnost_chladne_zbrane += $_POST['sp_0'];
+				$this->player->zrucnost_strelne_zbrane += $_POST['sp_1'];
+				$this->player->zrucnost_cudzinecke_zbrane += $_POST['sp_2'];
+				$this->player->zrucnost_utocna_magia += $_POST['sp_3'];
+				$this->player->zrucnost_obranna_magia += $_POST['sp_4'];
+				$this->player->zrucnost_obchodovanie += $_POST['sp_5'];
+				$this->player->zrucnost_kradnutie += $_POST['sp_6'];
+				$this->player->zrucnost_gamblovanie += $_POST['sp_7'];
+				$this->player->zrucnost_liecenie += $_POST['sp_8'];
+				$this->player->zrucnost_vyroba_lektvarov += $_POST['sp_9'];
+			
+				$decrease = $_POST['sp_0'] + $_POST['sp_1'] + $_POST['sp_2'] + $_POST['sp_3'] + $_POST['sp_4'] + $_POST['sp_5'] + $_POST['sp_6'] + $_POST['sp_7'] + $_POST['sp_8'] + $_POST['sp_9'];
+				$this->player->skill_points -= $decrease;
+				//$this->player->volne
+				$this->player->save_zrucnosti();
+			} else {
+			}
+			
+			
+			
+			$perks = $this->player->getAllPerks();
+			
+			$added_perks_count = 0;
+			$added_perks = array();
+			
+			
+			foreach($perks as $perk) {
+				if (!$this->player->hasPerk($perk->id) && (isset($_POST['perk_'.$perk->id]))) {
+						
+					$added_perks_count++;
+					$added_perks[] = $perk->id;
+				}
+			}
+			
+			if ($added_perks_count <= $this->player->volne_perky) {
+				foreach ($added_perks as $perk) {
+					$this->player->addPerk($perk);
+				}
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+		}
+		
+		$this->Display('external_script.css','Postava');
+	}
+}
+
+	// vytvorenie objektu skriptu
+	$page = new CHARACTER();
+
+?>

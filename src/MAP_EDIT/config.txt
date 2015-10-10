@@ -1,0 +1,10 @@
+drunk_elves.php
+%%%%%
+field.php
+forest.php
+coast.php
+swamp.php
+mountain.php
+snow.php
+river.php
+desert.php

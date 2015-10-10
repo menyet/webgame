@@ -1,0 +1,55 @@
+div#popupbackground {
+	position:absolute;
+	left:0px;
+	top:0px;
+	background-color:#442200;
+	width:100%;
+	height:800px;
+	opacity:0.5;
+  display:none;
+}
+
+div#popupcontainer {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:100%;
+	
+	display:none;
+
+
+}
+
+
+
+div#popupscreen {
+	width:950px;
+	height:600px;
+	margin-top:50px;
+	margin-left:auto;
+	margin-right:auto;
+	background-color:black;
+	border:solid 1px white;
+	
+	position:relative;
+	
+	color:white;
+
+	/*display:none;*/
+
+}
+
+
+div#popupscreen a {
+	color:white;
+	text-decoration:none;
+	font-weight:bold;
+}
+
+div#popupclose {
+	float:right;
+}
+
+div#popuptitle {
+	
+}
