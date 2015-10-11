@@ -10,6 +10,10 @@ class STORY_PAGE extends NOT_LOGGED_PAGE
 		$this->Display("title_page.css");
 	}
 	
+	function DisplayContent() {
+	    
+	}
+	
 	function DisplayBody(){
 		echo '<div class="center">';
 		echo '<div class="story">';
