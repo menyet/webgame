@@ -11,49 +11,71 @@
             }
 
             body {
+                background: url("/public/images/bg.png") no-repeat center center fixed; 
+                -webkit-background-size: cover;
+                  -moz-background-size: cover;
+                  -o-background-size: cover;
+                  background-size: cover;
                 margin: 0;
                 padding: 0;
                 width: 100%;
                 font-weight: 100;
                 font-family: 'Lato';
+                color:#ffffff;
             }
 
             .container {
-                clear:both;
-                background-color: #6495ed;
-                height:500px;
-                width:1000px; 
+                height: 100%;
+                width: 100%; 
                 position: relative;
             }
 
             .content {
-                
                 position: absolute;
-                top: 50%;
-                left: 50%;
+                
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
                 height: 30%;
                 width: 50%;
-                margin: -15% 0 0 -25%;
+                margin: auto;
             }
             
             
             .title {
                 font-size: 96px;
+                text-align: center;
             }
             
             .menu {
-                afloat: right;
+                float: right;
+                margin: 20px;
+            }
+            
+            .menu a {
+                font-size: 24px;
+                font-weight:bold;
+                color: #ffffff;
+                margin-left:5px;
+                text-decoration:none;
+            }
+            
+            .menu a:hover {
+                text-decoration:underline;
+                color: #cccccc;
             }
         </style>
     </head>
     <body>
-        <div class="menu">
-            <a href="{{ action('MainController@home') }}">Home</a>
-            <a href="{{ action('MainController@home') }}">Home</a>
-            <a href="{{ action('MainController@home') }}">Home</a>
-        </div>
-        
         <div class="container">
+            <div class="menu">
+                <a href="{{ action('MainController@home') }}">Home</a>
+                <a href="{{ action('MainController@home') }}">Sign in</a>
+                <a href="{{ action('MainController@home') }}">Register</a>
+                <a href="{{ action('MainController@home') }}">About</a>
+            </div>
+        
             <div class="content">
                 @yield('content')
             </div>
